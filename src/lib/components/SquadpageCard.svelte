@@ -20,10 +20,10 @@
     <div class="hastag-container">
       <Hashtag />
     </div>
-    <div class="arrow-container">
-      <a href={squadpageUrl} target="_blank" rel="noreferrer noopener"
-        >Bekijk deze squad
-        <span class="arrow" />
+    <div class="cta-container">
+      <a href={squadpageUrl} target="_blank" rel="noreferrer noopener">
+        <span>Bekijk</span>
+        <span>Squadpage</span>
       </a>
     </div>
   </div>
@@ -152,52 +152,61 @@
     background-color: var(--lavender);
   }
 
-  .arrow-container {
-    width: 4rem;
+  .cta-container {
     flex: 1;
     border-radius: 3.125rem;
     border: 2px solid var(--lavender);
+    position: relative;
   }
 
-  .arrow-container:hover {
-    background-color: var(--lavender);
+  .cta-container:hover::after {
+    transform: translate(calc(100% - 0.5rem), -50%);
+  }
+
+  .cta-container:hover span:first-child {
+    color: var(--color-white);
+  }
+
+  .cta-container:hover span:last-child {
     color: var(--blueberry);
   }
 
-  .arrow-container:hover .arrow {
-    background-color: var(--blueberry);
-  }
-
-  .arrow-container:hover .arrow::after {
-    border-color: var(--blueberry);
-  }
-
-  .arrow-container a {
+  .cta-container a {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 0;
-    color: #000;
+    text-decoration: none;
   }
 
-  .arrow {
-    position: relative;
-    width: 90%;
-    height: 3px;
-    background-color: var(--lavender);
+  .cta-container span {
+    font-size: 1.2rem;
+    width: 50%;
+    text-align: center;
+    transition: 400ms color ease-in-out;
   }
 
-  .arrow::after {
+  .cta-container span:first-child {
+    color: var(--blueberry);
+  }
+
+  .cta-container span:last-child {
+    color: var(--color-white);
+  }
+
+  .cta-container::after {
     content: '';
     position: absolute;
-    width: 0.85rem;
-    height: 0.85rem;
-    border-right: 3px solid var(--lavender);
-    border-bottom: 3px solid var(--lavender);
-    transform: rotate(-45deg) translateY(-50%);
-    right: calc(-0.5rem + 2px);
-    top: -50%;
+    width: 50%;
+    height: calc(100% - 0.5rem);
+    background-color: var(--color-white);
+    top: 50%;
+    left: 0.25rem;
+    border-radius: var(--pilled);
+    transform: translateY(-50%);
+    z-index: -1;
+    transition: 400ms transform ease-out;
   }
 </style>
